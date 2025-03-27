@@ -1,0 +1,143 @@
+/* Container */
+.users-page {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.users-page .user-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.user-list-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: #ecf0f1;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Search Icon */
+.user-list-search-bar svg {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+/* Search Input */
+.user-search-bar {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.user-search-bar::placeholder {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Focus Effect */
+.user-search-bar:focus {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Table Styles */
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Table Header */
+.user-list-table thead {
+    background: #2c3e50;
+    color: #ffffff;
+}
+
+
+/* Table Rows */
+.user-list-table th,
+.user-list-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    line-height: 35px;
+}
+
+.user-list-table tr {
+    cursor: pointer;
+}
+
+/* Alternate Row Colors */
+.user-list-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Hover Effect */
+.user-list-table tbody tr:hover {
+    background: #dfe6e9;
+    transition: background 0.3s ease;
+}
+
+/* Status Badges */
+.user-status-active {
+    background: #27ae60;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.user-status-inactive {
+    background: #e74c3c;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Pagination */
+.users-page .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.users-page .pagination button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.users-page .pagination button:hover {
+    background: #2980b9;
+}
+
+/* .pagination .active {
+    background: #2c3e50;
+    font-weight: bold;
+} */

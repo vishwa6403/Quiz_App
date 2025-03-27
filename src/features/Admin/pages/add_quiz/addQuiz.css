@@ -1,0 +1,74 @@
+/* Right Side Form Container */
+.quiz-form-container {
+    /* flex-grow: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Quiz Form Card */
+.quiz-form-card {
+    width: 80%;
+    /* max-width: 500px; */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title and Description */
+.quiz-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.quiz-description {
+    font-size: 14px;
+    color: #7f8c8d;
+    text-align: center;
+}
+
+/* Input Fields */
+.quiz-form-card .input-icon {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.input-icon .icon {
+    color: #2c3e50;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.input-icon input,
+.input-icon textarea {
+    border: none;
+    background: transparent;
+    flex: 1;
+    padding: 8px;
+    outline: none;
+}
+
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    background-color: #1abc9c;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background-color: #1abc9c;
+    box-shadow: 0px 4px 8px rgb(26 188 156);
+}

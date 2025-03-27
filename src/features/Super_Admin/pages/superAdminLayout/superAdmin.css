@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.superadmin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.superadmin-container .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.superadmin-container .main-admin-content {
+
+    padding: 0;
+}

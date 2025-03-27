@@ -1,0 +1,54 @@
+.user-data-wrapper {
+    background-image: url("../../../../assets/images/background.png");
+    background-color: rgba(44, 62, 80, 0.95);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-data-container {
+    background: #fff;
+    /* Transparent White */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 40%;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.user-data-container .avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.user-info p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    color: #333;
+}
+
+.user-data-container h3 {
+    margin: 20px;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.user-data-container .quiz-history {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-data-container .quiz-history li {
+    background: #e9ecef;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.user-data-container .score {
+    font-weight: bold;
+    color: #27ae60;
+}
