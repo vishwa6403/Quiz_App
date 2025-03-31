@@ -1,8 +1,7 @@
 import React from 'react';
 import './userData.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, Container, ListGroup } from 'react-bootstrap';
-import AdminNavbar from '../../../../components/admin_navbar/AdminNavbar';
+import Avatar from './../../../../components/avatar/Avatar';
 
 const UserData = () => {
     const location = useLocation();
@@ -14,30 +13,35 @@ const UserData = () => {
     }
 
     return (
-        <>
-            <AdminNavbar />
-            <Container className="user-data-container">
-                <Card className="user-data-card">
-                    <Card.Body>
+        <div className="user-details-container">
+            <div className="card user-details-card">
+                <div className='card-body'>
+                    <div className="user-data">
+                        <Avatar name={user.name} />
                         <h3 className="text-center">{user.name}'s Details</h3>
                         <p className="text-muted text-center">{user.email}</p>
-                        <h5 className="mt-4">Quizzes Played</h5>
-                        <ListGroup className='row'>
-                            {user.quizzes.map((quiz, index) => (
-                                <ListGroup.Item key={index} className="quiz-list col-md-6">
+                    </div>
+                    <h5 className="user-quiz-title text-center">Quizzes Played</h5>
+                    <div className='row'>
+                        {user.quizzes.map((quiz, index) => (
+                            <div key={index} className="quiz-list col-md-6">
+                                <div className="list-item">
                                     <strong>{quiz.quizName}</strong>
                                     <p>Start Time: {quiz.startTime}</p>
                                     <p>End Time: {quiz.endTime}</p>
                                     <p>Attempted: {quiz.attempted} | Correct: {quiz.correct} | Incorrect: {quiz.incorrect}</p>
                                     <p>Score: <span className="score">{quiz.score}</span></p>
-                                </ListGroup.Item>
-                            ))}
-                        </ListGroup>
-                        <button className="back-btn" onClick={() => navigate(-1)}>Back</button>
-                    </Card.Body>
-                </Card>
-            </Container>
-        </>
+                                </div>
+                            </div>
+                        ))}
+                        <div className="col-md-12 user-data-back-btn">
+                            <button className="back-btn" onClick={() => navigate(-1)}>Back</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 

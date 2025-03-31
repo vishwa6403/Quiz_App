@@ -2,9 +2,7 @@ import React from 'react';
 import './quizDashboard.css';
 import { useNavigate } from 'react-router-dom';
 import { FaPlay, FaTrophy, FaHistory } from "react-icons/fa";
-import QuizNavbar from '../quiz_navbar/QuizNavbar';
 import { Container } from 'react-bootstrap';
-import Header from '../header/Header';
 
 const QuizDashboard = () => {
     const navigate = useNavigate();
@@ -37,7 +35,7 @@ const QuizDashboard = () => {
                             <div key={quiz.id} className="quiz-card">
                                 <h4>{quiz.title}</h4>
                                 <p>{quiz.questions} Questions • {quiz.time}</p>
-                                <button onClick={() => navigate(`/instructions`)}>
+                                <button onClick={() => navigate(`/quiz/instructions`)}>
                                     <FaPlay /> Start Quiz
                                 </button>
                             </div>

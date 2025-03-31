@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './header.css';
 import { FaCog, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import Avatar from '../../../../components/avatar/Avatar';
 
 const Header = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -8,8 +9,7 @@ const Header = () => {
 
     const user = {
         name: "John Doe",
-        email: "john@example.com",
-        avatar: "https://i.pravatar.cc/150", // Random avatar
+        email: "john@example.com"// Random avatar
     };
 
     const toggleDropdown = () => {
@@ -39,7 +39,8 @@ const Header = () => {
             <h2 className="logo">QuizMaster</h2>
             <div className="profile-section" ref={dropdownRef}>
                 <div className="profile-info" onClick={toggleDropdown}>
-                    <img src={user.avatar} alt="User Avatar" className="avatar" />
+                    {/* <img src={user.avatar} alt="User Avatar" className="avatar" /> */}
+                    <Avatar name={user.name} />
                     <span className="user-name">{user.name}</span>
                 </div>
 

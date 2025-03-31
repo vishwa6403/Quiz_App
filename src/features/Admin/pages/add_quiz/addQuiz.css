@@ -18,14 +18,14 @@
 }
 
 /* Title and Description */
-.quiz-title {
+.quiz-form-card .quiz-title {
     font-size: 24px;
     font-weight: bold;
     color: #2c3e50;
     text-align: center;
 }
 
-.quiz-description {
+.quiz-form-card .quiz-description {
     font-size: 14px;
     color: #7f8c8d;
     text-align: center;
@@ -40,14 +40,14 @@
     padding: 10px;
 }
 
-.input-icon .icon {
+.quiz-form-card .input-icon .icon {
     color: #2c3e50;
     margin-right: 10px;
     font-size: 18px;
 }
 
-.input-icon input,
-.input-icon textarea {
+.quiz-form-card .input-icon input,
+.quiz-form-card .input-icon textarea {
     border: none;
     background: transparent;
     flex: 1;
@@ -57,7 +57,7 @@
 
 
 /* Submit Button */
-.submit-btn {
+.quiz-form-card .submit-btn {
     width: 100%;
     background-color: #1abc9c;
     border: none;
@@ -68,7 +68,7 @@
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.submit-btn:hover {
+.quiz-form-card .submit-btn:hover {
     background-color: #1abc9c;
     box-shadow: 0px 4px 8px rgb(26 188 156);
 }

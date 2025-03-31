@@ -8,23 +8,22 @@ const Sidebar = ({ setSelectedMenu, selectedMenu }) => {
     return (
         <div className="admin-sidebar">
             <h4 className="sidebar-title">Admin Panel</h4>
-            <ul className="sidebar-menu">
-                <li className={`${selectedMenu === "dashboard" ? "active" : ""}`} onClick={() => setSelectedMenu("dashboard")}>
-                    <Link ><FaChartBar /> Dashboard</Link>
-                </li>
-                <li className={`${selectedMenu === "create-quiz" ? "active" : ""}`} onClick={() => setSelectedMenu("create-quiz")}>
-                    <Link ><FaPlus /> Create Quiz</Link></li>
-                <li className={`${selectedMenu === "manage-quiz" ? "active" : ""}`} onClick={() => setSelectedMenu("manage-quiz")}><Link ><FaLayerGroup /> Manage Quizzes</Link>
-                </li>
-                <li className={`${selectedMenu === "add-question" ? "active" : ""}`} onClick={() => setSelectedMenu("add-question")}>
-                    <Link ><FaClipboardList /> Add Questions</Link>
-                </li>
-                <li className={`${selectedMenu === "manage-users" ? "active" : ""}`} onClick={() => setSelectedMenu("manage-users")}>
-                    <Link><FaUsers /> Manage Users</Link>
-                </li>
-                {/* <li className="logout">
-                    <Link to="/login"><FaSignOutAlt /> Logout</Link>
-                </li> */}
+            <ul className="admin-sidebar-menu">
+                <Link to="/admin" className={`${selectedMenu === "dashboard" ? "active" : ""}`} onClick={() => setSelectedMenu("dashboard")}>
+                    <FaChartBar /> Dashboard
+                </Link>
+                <Link to="/admin/create-quiz" className={`${selectedMenu === "create-quiz" ? "active" : ""}`} onClick={() => setSelectedMenu("create-quiz")}>
+                    <FaPlus /> Create Quiz
+                </Link>
+                <Link to="/admin/manage-quiz" className={`${selectedMenu === "manage-quiz" ? "active" : ""}`} onClick={() => setSelectedMenu("manage-quiz")}>
+                    <FaLayerGroup /> Manage Quizzes
+                </Link>
+                <Link to="/admin/add-question" className={`${selectedMenu === "add-question" ? "active" : ""}`} onClick={() => setSelectedMenu("add-question")}>
+                    <FaClipboardList /> Add Questions
+                </Link>
+                <Link to="/admin/manage-users" className={`${selectedMenu === "manage-users" ? "active" : ""}`} onClick={() => setSelectedMenu("manage-users")}>
+                    <FaUsers /> Manage Users
+                </Link>
             </ul>
         </div>
     );

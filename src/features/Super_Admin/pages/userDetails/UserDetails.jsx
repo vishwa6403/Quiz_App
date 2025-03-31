@@ -1,10 +1,12 @@
 import React from 'react';
 import './userDetail.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Avatar from './../../../../components/avatar/Avatar';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const UserDetails = () => {
     const { id } = useParams(); // Get User ID from URL (React Router)
+    const navigate = useNavigate();  // Get the navigate function from React Router
 
     // Sample User Data (Replace with API data)
     const userData = {
@@ -36,8 +38,13 @@ const UserDetails = () => {
                         </li>
                     ))}
                 </ul>
+                <div className="user-back-btn">
+                    <button onClick={() => navigate(-1)}>
+                        <FaArrowLeft /> Back
+                    </button>
+                </div>
             </div>
-        </div>
+        </div >
     );
 };
 

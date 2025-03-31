@@ -17,7 +17,6 @@ const ManageUsers = () => {
             quizzes: [
                 { quizName: "Java Basics", startTime: "10:00 AM", endTime: "10:30 AM", attempted: 10, correct: 8, incorrect: 2, score: 80 },
                 { quizName: "ReactJS", startTime: "12:00 PM", endTime: "12:40 PM", attempted: 12, correct: 10, incorrect: 2, score: 90 },
-                { quizName: "Python Fundamentals", startTime: "02:00 PM", endTime: "02:45 PM", attempted: 15, correct: 12, incorrect: 3, score: 85 }
             ],
         },
         {
@@ -70,7 +69,7 @@ const ManageUsers = () => {
                                             <Button
                                                 variant="info"
                                                 className="view-btn"
-                                                onClick={() => navigate(`/userData/${user.id}`, { state: { user } })}
+                                                onClick={() => navigate(`/admin/userData/${user.id}`, { state: { user } })}
                                             >
                                                 <FaEye /> View
                                             </Button>

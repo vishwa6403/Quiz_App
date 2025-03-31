@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const AddQuestions = () => {
     const dispatch = useDispatch();
-    const quesArray = useSelector((state) => state.adminData?.questions);
+    const quesArray = useSelector((state) => state.quizData?.questions);
     console.log("🚀 ~ AddQuestions ~ quesArray:", quesArray);
 
     const [question, setQuestion] = useState({
@@ -60,7 +60,7 @@ const AddQuestions = () => {
                 <FaPlusCircle className="icon" /> Add New Question
             </h2>
 
-            <div className="content">
+            <div className="add-questions-content">
                 {/* Left Side: Question Form */}
                 <form className="question-form" onSubmit={handleSubmit}>
                     <div className="form-group">

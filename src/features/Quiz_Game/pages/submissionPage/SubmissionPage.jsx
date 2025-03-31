@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './submissionPage.css';
 import { useNavigate } from 'react-router-dom';
 import { FaCheckCircle, FaHome, FaTimesCircle } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const SubmissionPage = () => {
     const navigate = useNavigate();
+    const results = useSelector((state) => state.quizData?.results || []);
 
+    // Calculate quiz summary
+    const totalQuestions = results.length;
+    const correctAnswers = results.filter((r) => r.correct).length;
+    const incorrectAnswers = totalQuestions - correctAnswers;
+    const score = `${correctAnswers} / ${totalQuestions}`;
+
+    useEffect(() => {
+        const isSubmitted = localStorage.getItem("quizSubmitted");
+
+        if (!isSubmitted) {
+            navigate("/quiz/dashboard"); // Redirect if accessed directly
+        }
+
+        // Prevent going back to quiz page after submission
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            navigate("/quiz/dashboard");
+        };
+    }, [navigate]);
     return (
         <div className="quiz-submission-container">
             <div className="submission-card">
@@ -15,20 +36,20 @@ const SubmissionPage = () => {
                 <div className="quiz-summary">
                     <div className="summary-box">
                         <FaCheckCircle className="summary-icon correct" />
-                        <h3>3</h3>
+                        <h3>{correctAnswers}</h3>
                         <p>Correct Answers</p>
                     </div>
                     <div className="summary-box">
                         <FaTimesCircle className="summary-icon incorrect" />
-                        <h3>2</h3>
+                        <h3>{incorrectAnswers}</h3>
                         <p>Incorrect Answers</p>
                     </div>
                     <div className="summary-box">
-                        <h3>5</h3>
+                        <h3>{totalQuestions}</h3>
                         <p>Total Questions</p>
                     </div>
                     <div className="summary-box">
-                        <h3>3 / 5</h3>
+                        <h3>{score}</h3>
                         <p>Your Score</p>
                     </div>
                 </div>

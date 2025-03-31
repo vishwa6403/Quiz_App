@@ -1,9 +1,11 @@
 import React from 'react';
 import './quizDetail.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const QuizDetails = () => {
     const { id } = useParams();  // Get Quiz ID from URL (React Router)
+    const navigate = useNavigate();
 
     // Sample Quiz Data (Replace with API data)
     const quizData = {
@@ -28,7 +30,11 @@ const QuizDetails = () => {
                     <p><strong>⏳ Time Limit:</strong> {quizData.timeLimit}</p>
                     <p><strong>👤 Created By:</strong> {quizData.createdBy}</p>
                 </div>
-
+                <div className="quiz-back-btn">
+                    <button onClick={() => navigate(-1)}>
+                        <FaArrowLeft /> Back
+                    </button>
+                </div>
                 {/* <button className="start-quiz-btn">Start Quiz 🚀</button> */}
             </div>
         </div>

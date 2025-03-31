@@ -7,49 +7,36 @@
     min-height: 100vh;
 }
 
-.sidebar-title {
+.admin-sidebar .sidebar-title {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
-.sidebar-menu {
+.admin-sidebar .admin-sidebar-menu {
     list-style: none;
     padding: 0;
 }
 
-.sidebar-menu li {
+.admin-sidebar-menu a {
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     transition: background 0.3s ease;
-}
-
-.sidebar-menu li a {
-    color: white;
     text-decoration: none;
+    color: white;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
-.sidebar-menu li:hover {
+.admin-sidebar-menu a:hover {
     background: #34495e;
 }
 
-.sidebar-menu li.active {
+.admin-sidebar-menu a.active {
     background: #1abc9c;
     border-left: 4px solid #16a085;
     font-weight: bold;
-}
-
-.sidebar-menu li.active a {
     color: #ffffff;
-}
-
-.sidebar-menu .logout {
-    margin-top: 20px;
-    background: #c0392b;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
 }

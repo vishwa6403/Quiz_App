@@ -55,17 +55,27 @@
     background: #3b4b63;
     border-radius: 8px;
     padding: 10px;
+    flex-wrap: nowrap;
 }
 
 /* Icons */
-.input-group .icon {
-    color: #1abc9c;
-    font-size: 18px;
-    margin-right: 10px;
+.input-group .input-icon {
+    font-size: 16px;
+    margin-right: 5px;
 }
 
-.input-group input:-internal-autofill-selected {
-    background-color: #34495e !important;
+.input-group input:-webkit-autofill {
+    background-color: #3b4b63 !important;
+    /* Your desired color */
+    color: white !important;
+    /* Change text color */
+    -webkit-box-shadow: 0 0 0px 1000px #3b4b63 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-group input:-webkit-autofill::first-line {
+    color: white !important;
+    /* Ensures text color is visible */
 }
 
 /* Input Fields */

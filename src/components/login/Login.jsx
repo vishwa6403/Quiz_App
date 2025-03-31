@@ -31,16 +31,20 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+
         const user = users.find(u => u.username === username && u.password === password);
         if (user) {
             localStorage.setItem("role", user.role);
             // Redirect based on role
             if (user.role === "SUPERADMIN") {
-                navigate("/superAdmin/dashboard");
+                localStorage.setItem("token", "token");
+                navigate("/superAdmin");
                 localStorage.setItem("activeTab", "dashboard");
             } else if (user.role === "ADMIN") {
-                navigate("/admin/dashboard");
+                localStorage.setItem("token", "token");
+                navigate("/admin");
             } else if (user.role === "USER") {
+                localStorage.setItem("token", "token");
                 navigate("/quiz/dashboard");
             }
         } else {
@@ -65,7 +69,7 @@ const Login = () => {
         e.preventDefault();
         console.log("Registered User:", registerData);
         setShowRegister(false);
-        alert("Registration Successful! Now Login.");
+        toast.success("Registration Successful! Now Login.");
     };
 
     return (
@@ -84,7 +88,6 @@ const Login = () => {
                                 placeholder="Username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                required
                             />
                         </div>
 
@@ -96,7 +99,6 @@ const Login = () => {
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                required
                             />
                             <div className="show-password" onClick={() => setShowPassword(!showPassword)}>
                                 {

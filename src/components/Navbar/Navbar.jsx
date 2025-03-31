@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './adminNavbar.css';
+import './navbar.css';
 import { FaRegEnvelope, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import Avatar from '../avatar/Avatar';
 
-const AdminNavbar = (props) => {
+const Navbar = (props) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -60,4 +60,4 @@ const AdminNavbar = (props) => {
     );
 };
 
-export default AdminNavbar; 
+export default Navbar; 

@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
 import './addQuiz.css';
 import { Button, Card, Form } from 'react-bootstrap';
-import { FaClipboardList, FaFileAlt } from 'react-icons/fa';
+import { FaClipboardList, FaFileAlt, FaListOl } from 'react-icons/fa';
+import { addQuizApi, getAllQuizzes } from '../../../../Services/Api';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from "uuid";
 import { addQuiz } from '../../../../redux/slice/adminSlice';
 
 const AddQuiz = () => {
     const dispatch = useDispatch();
-
     const initialQuiz = {
         id: "",
         title: "",
-        description: ""
+        description: "",
+        questionLimit: 1
     };
 
     const [quiz, setQuiz] = useState(initialQuiz);
+
+    // Handle adding a quiz
+    const handleAddQuiz = async () => {
+        try {
+            const result = await addQuizApi(quiz?.title, quiz?.questionLimit);
+            console.log("Quiz Added:", result);
+            toast.success("Quiz added successfully");
+        } catch (error) {
+            console.error("Error adding quiz:", error);
+            toast.error("Failed to add quiz");
+        }
+    };
+
+
 
     // Handle input change
     const handleChange = (e) => {
@@ -30,12 +45,7 @@ const AddQuiz = () => {
         e.preventDefault();
         if (!quiz.title.trim() || !quiz.description.trim()) return;
 
-        const newQuiz = {
-            ...quiz,
-            id: uuidv4() // ✅ Generate unique ID for each quiz
-        };
-
-        dispatch(addQuiz(newQuiz)); // ✅ Add quiz to Redux store
+        handleAddQuiz(); // ✅ Add quiz to API and Redux store
         setQuiz(initialQuiz); // ✅ Reset form after submission
     };
 
@@ -82,6 +92,21 @@ const AddQuiz = () => {
                                     rows={2}
                                     placeholder="Enter quiz description"
                                     value={quiz.description}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Question Limit</Form.Label>
+                            <div className="input-icon">
+                                <FaListOl className="icon" /> {/* Using FaListOl as an appropriate icon */}
+                                <Form.Control
+                                    type="number"
+                                    name="questionLimit"
+                                    min={1}  // Ensuring a minimum limit of 1 question
+                                    placeholder="Enter question limit"
+                                    value={quiz.questionLimit}
                                     onChange={handleChange}
                                     required
                                 />

@@ -7,7 +7,7 @@ const Instruction = ({ quizTitle }) => {
     const navigate = useNavigate();
 
     const handleStartQuiz = () => {
-        navigate("/quiz-play"); // Redirect to Quiz Play Page
+        navigate("/quiz/quiz-play"); // Redirect to Quiz Play Page
     };
 
     return (

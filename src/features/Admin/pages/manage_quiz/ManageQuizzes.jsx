@@ -1,31 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './manageQuizzes.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaClipboardList, FaExclamationTriangle, FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { getAllQuizzes } from '../../../../Services/Api';
+import { addQuiz } from '../../../../redux/slice/adminSlice';
 
 const ManageQuizzes = () => {
     const navigate = useNavigate();
-    const quizzes = useSelector((state) => state.adminData?.quizzes);
+    const dispatch = useDispatch();
+    // const quizzes = useSelector((state) => state.quizData?.quizzes);
+    const quizList = useSelector((state) => state.quizData?.quizzes);
+    const quizDataList = !!quizList ? quizList[0] : [];
+    console.log("🚀 ~ ManageQuizzes ~ quizDataList:", quizDataList);
 
-    // Dummy Quiz Data
-    // const quizzes = [
-    //     {
-    //         id: 1,
-    //         title: "Java Basics",
-    //         description: "A quiz covering fundamental Java concepts.",
-    //         totalQuestions: 50,
-    //     },
-    //     // Uncomment the below object to test multiple quizzes
-    //     {
-    //         id: 2,
-    //         title: "ReactJS Advanced",
-    //         description: "Test your ReactJS knowledge with this quiz.",
-    //         totalQuestions: 40,
-    //     },
-    // ];
+    const handleAllQuizzes = async () => {
+        try {
+            const result = await getAllQuizzes();
+            const { code, message, data, status } = result;
+            if (code === 200 && status === "OK") {
+                dispatch(addQuiz(data));
+            }
 
+        } catch (error) {
+            console.error("Error adding quiz:", error);
+        }
+    };
+
+    useEffect(() => {
+        handleAllQuizzes();
+    }, []);
     return (
         <Container className="manage-quizzes-container">
             {/* Header with Icon */}
@@ -33,25 +38,43 @@ const ManageQuizzes = () => {
                 <FaClipboardList className="header-icon" /> Manage Quizzes
             </h2>
 
+            {/* Loading State */}
+            {/* {loading && (
+                <div className="loading-message">
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    <p>Loading quizzes...</p>
+                </div>
+            )} */}
+
+            {/* Error State */}
+            {/* {error && (
+                <div className="error-message">
+                    <FaExclamationTriangle className="error-icon" />
+                    <p>Error: {error}</p>
+                </div>
+            )} */}
+
             {/* If No Quizzes Exist */}
-            {quizzes.length === 0 ? (
+            {quizDataList?.length === 0 ? (
                 <div className="no-quizzes-message">
                     <FaExclamationTriangle className="no-quiz-icon" />
                     <p>No quizzes available. Please add a new quiz.</p>
                 </div>
             ) : (
                 <Row className="quiz-row">
-                    {quizzes.map((quiz, index) => (
-                        <Col key={quiz.id} className={`quiz-col ${quizzes.length === 1 ? "single-quiz" : ""}`}>
+                    {quizDataList?.map((quiz) => (
+                        <Col key={quiz?.id} className={`quiz-col ${quizDataList?.length === 1 ? "single-col" : ""}   `}>
                             <Card className="quiz-card">
                                 <Card.Body>
-                                    <Card.Title className="quiz-title">{quiz.title}</Card.Title>
-                                    <Card.Text className="quiz-description">{quiz.description}</Card.Text>
-                                    <p className="quiz-questions">Total Questions: {quiz.totalQuestions}</p>
+                                    <Card.Title className="quiz-title">{quiz.quizName}</Card.Title>
+                                    {/* <Card.Text className="quiz-description">{quiz.description}</Card.Text>
+                                    <p className="quiz-questions">Total Questions: {quiz.totalQuestions}</p> */}
                                     <Button
                                         variant="primary"
                                         className="view-btn"
-                                        onClick={() => navigate(`/quizDetails/${quiz.id}`)}
+                                    // onClick={() => navigate(`/quizDetails/${quiz?.id}`)}
                                     >
                                         <FaEye /> View Quiz
                                     </Button>

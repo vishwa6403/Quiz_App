@@ -1,0 +1,10 @@
+.quiz-layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.quiz-layout-container .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
